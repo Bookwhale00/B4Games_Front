@@ -1,4 +1,4 @@
-const frontend_base_url = "http://127.0.0.1:8741"
+const frontend_base_url = "http://127.0.0.1:5500"
 const backend_base_url = "http://127.0.0.1:8000"
 const API_USERS = "api/users"
 
@@ -30,7 +30,7 @@ window.onload = async () => {
 
 
 async function updateProfile() {
-    const image = document.getElementById("image").value
+    const image = document.getElementById("image").files[0]
     const username = document.getElementById("username").value
     const status_message = document.getElementById("status_message").value
     const user_id = document.getElementById("user_id").value

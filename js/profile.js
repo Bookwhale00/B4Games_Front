@@ -1,4 +1,4 @@
-const frontend_base_url = "http://127.0.0.1:8741"
+const frontend_base_url = "http://127.0.0.1:5500"
 const backend_base_url = "http://127.0.0.1:8000"
 const API_USERS = "api/users"
 
@@ -19,7 +19,6 @@ window.onload = async () => {
 
         dropdown_menu = document.getElementById("dropdown_toggle")
         dropdown_menu.innerText = nav_response_json.username
-        console.log(nav_response_json.is_seller)
 
         nav_profile_image = document.getElementById("nav_profile_image")
         if (nav_response_json.image != null) {
@@ -179,7 +178,6 @@ async function getArticles() {
     const payload = localStorage.getItem("payload");
     const payload_parse = JSON.parse(payload)
     const userId = payload_parse.user_id
-    console.log(userId)
 
     const response = await fetch(`${backend_base_url}/api/posts/${userId}/mypost/`, {
         // headers: {
@@ -193,7 +191,6 @@ async function getArticles() {
     console.log(response)
     if (response.status == 200) {
         const response_json = await response.json()
-        console.log(response_json)
         return response_json
     } else {
         alert("게시글 가져오기 실패")
