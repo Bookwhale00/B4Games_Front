@@ -1,3 +1,35 @@
 .base-logo {
     background-color: black;
 }
+
+.dropdown_option_1 {
+    margin-left: 5%;
+    /* 밑줄 제거 */
+    color: white;
+    /* 글자 색상 */
+    background-color: transparent;
+    /* 배경색상 */
+    color: black;
+    text-decoration: none;
+}
+
+.dropdown_option_1:hover {
+    color: white;
+    background-color: black;
+}
+
+.dropdown_option_2 {
+    margin-left: 5%;
+    /* 밑줄 제거 */
+    color: white;
+    /* 글자 색상 */
+    background-color: transparent;
+    /* 배경색상 */
+    color: black;
+    text-decoration: none;
+}
+
+.dropdown_option_2:hover {
+    color: white;
+    background-color: black;
+}

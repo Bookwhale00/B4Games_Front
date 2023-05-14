@@ -1,58 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="/css/base.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-            crossorigin="anonymous"></script>
-        <title>Document</title>
-    </head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+    <title>Home</title>
 </head>
 
-<body style="background-color: #121212;">
+
+<body style="background-color: #121212;;">
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid" style="background-color: black;">
-            <a class="navbar-brand" href="#">
-                <img src="https://images-eds-ssl.xboxlive.com/image?url=Q_rwcVSTCIytJ0KOzcjWTYl.n38D8jlKWXJx7NRJmQKBAEDCgtTAQ0JS02UoaiwRj.VcHXTwP3Gcq532nGGgSA8qyM.nT53pbAyjew8mzCXzC0mTj86VJ_q_ZhLoMNJuhb7Yws.q4QMuASMMTASiIA--&format=source"
-                    alt="Logo" width="70" height="70" class="d-inline-block align-text-top">
+            <a class="navbar-brand" href="home.html">
+                <img src="/static/b4.jpg" alt="Logo" width="70" height="70" class="d-inline-block align-text-top">
             </a>
-            <div class="d-flex flex-row" style="margin-right: 0%;">
+            <div class="d-flex flex-row" style="margin-right: 5%;">
                 <div class="p-2">
-                    <img class="profile" width="70" height="70"
-                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAY1BMVEUAAACZmZmenp4wMDCfn5+YmJh7e3uOjo5+fn6VlZWEhISJiYlxcXFsbGx3d3eSkpI5OTkkJCRAQEBZWVlhYWFubm4ODg5LS0tnZ2deXl4fHx9VVVUXFxcSEhI+Pj4pKSlNTU1/Klr1AAAEuElEQVR4nO2cWXeiQBBG7bbZFRRFcUv8/79yQHSiE0SgC6qY892HSU5epu6pppfqZTYDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP5TVtd8Efu+G2eH/Td3MNTs0oVndIEqKH8aHW7n3FHRkbqqcntB6yRfc4dGwiYxv/XukiZccYdnzcZ5p1cxdceV1+x3c4x33GH2Z/HZr2yras8daE/WLRJ4T+OCO9ZepG39yjRGE2ypJ6OU09bQ0cGRO+CuHEz7DFZMbGw8dRV01LSyuO+cwYKEO+oOzHX7T/AHHXHH3Z6gRwZLxSV34G1xO4wTL5iUO/R29PoIKxzu2NvRs42W6Iw7+DbkfdvoTXECi/+djaDSPnf8n8msDJURn8Sd6jAdrSPmNvjEwS6FRTs9cyt8ILEUVPrArdDMvP9Y+MDjdmjGaqioMLKXUZG1oNIbbokm7AbDOy63RRNdajNvEb1O3FIYGsnjhUsgKHsNRdDRCO9qKASVyrk1GqAxFDw1vdAYCh4uzhRdqVKC14g0hpJXwSRTGtGt9P/vaWgMRReGPRJDySM+yaxNS970JlgAF/NSydtsewrDgNuiCZIBMeS2aISgqxFebFvaGwqveq/sq4miixgzq621Ci15dVhiPV5o2eXS2exoZeiIXjrdie0UjfzDmEe7vkb2YFjR7sjlG7T8FNoVa7Tkxe8PJ4skTuQQZthT0TFX7tBbcu65ka8lly9e+erXn0qfrz2z6a5Y5F3yntMv8h5ZnNgtoayr4iRGwhe6ZnFiGSzpctRbB9JXFLWsWg8aRv6Cop6d3yqNWnhlppHrh5tr5SBhwkm20L8sa+5WviQwkVzhbsU5U+8djXfijo+ETVSXyOJv7hd3aGSsD6H6e9O5lDMmia/cUVHzvc9jP0oSL3QXh/TCHQ4AAAAAAAAAAAD6szsfj8fzZSIbve3ZrfbbzI2SJFC3t+i0EyRe5Gb5NZ12pbTgmB7iSD+VoF5rbWVBKggXhy/JR2bfk279RJuyVvph+6JMaxDm+ylpnvdZZD7Uup9xKs/AP0xii22Ve7WNsg3aOP5JdC6PJ7/uDciOlt5S6Hbwehv1Tt4/kjpYiKv3r7cejZ16fJZBJuijvGyitw949qdorhsZc4PUJcveL0kV8x9r3wb2Z9ebHE3IerN7lzfsflJhvCub4Bh+Zb9jEh7HT+/nUmK88dvqKhnP7+YYjtznxIP2L3XoUd9yS0dsoE+OznUswcXoCbxj/FGmAJeo19udJOhghK9xziT3cBz8CBXJK0I2mIFvepNc9JWs+MUvOGxD/ZYgOOQ92p31BVEiBruY4ctI4XCXayzeB6ZmoHuYUtpoySBPf5O8NkfFIG+6cc3U6hngNq2Asf4ZTV8ad9mm27UM8EyPpH6mhPyazVnOUFFBPurPZX2GRW9KvRgmeAKZFvLnhsXlUFNv3MBwdGAIQxjyA0MYwpAfGMIQhvzAEIYw5AeGMIQhPzCEIQz5gSEMYcgPDGEIQ35gCEMY8gNDGMKQn0ENHwdNnYJxtZyfH/SGpnpv5fZP9cvtP2u+qa5//UIGueExy5fLbFmSLZ6IH7i1+K+E9x+1RC94d5JngjtOB8M/OCdYpsoN4csAAAAASUVORK5CYII=">
+                    <a href="mypage.html">
+                        <img class="profile" width="70" height="70" id="nav_profile_image"
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAY1BMVEUAAACZmZmenp4wMDCfn5+YmJh7e3uOjo5+fn6VlZWEhISJiYlxcXFsbGx3d3eSkpI5OTkkJCRAQEBZWVlhYWFubm4ODg5LS0tnZ2deXl4fHx9VVVUXFxcSEhI+Pj4pKSlNTU1/Klr1AAAEuElEQVR4nO2cWXeiQBBG7bbZFRRFcUv8/79yQHSiE0SgC6qY892HSU5epu6pppfqZTYDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP5TVtd8Efu+G2eH/Td3MNTs0oVndIEqKH8aHW7n3FHRkbqqcntB6yRfc4dGwiYxv/XukiZccYdnzcZ5p1cxdceV1+x3c4x33GH2Z/HZr2yras8daE/WLRJ4T+OCO9ZepG39yjRGE2ypJ6OU09bQ0cGRO+CuHEz7DFZMbGw8dRV01LSyuO+cwYKEO+oOzHX7T/AHHXHH3Z6gRwZLxSV34G1xO4wTL5iUO/R29PoIKxzu2NvRs42W6Iw7+DbkfdvoTXECi/+djaDSPnf8n8msDJURn8Sd6jAdrSPmNvjEwS6FRTs9cyt8ILEUVPrArdDMvP9Y+MDjdmjGaqioMLKXUZG1oNIbbokm7AbDOy63RRNdajNvEb1O3FIYGsnjhUsgKHsNRdDRCO9qKASVyrk1GqAxFDw1vdAYCh4uzhRdqVKC14g0hpJXwSRTGtGt9P/vaWgMRReGPRJDySM+yaxNS970JlgAF/NSydtsewrDgNuiCZIBMeS2aISgqxFebFvaGwqveq/sq4miixgzq621Ci15dVhiPV5o2eXS2exoZeiIXjrdie0UjfzDmEe7vkb2YFjR7sjlG7T8FNoVa7Tkxe8PJ4skTuQQZthT0TFX7tBbcu65ka8lly9e+erXn0qfrz2z6a5Y5F3yntMv8h5ZnNgtoayr4iRGwhe6ZnFiGSzpctRbB9JXFLWsWg8aRv6Cop6d3yqNWnhlppHrh5tr5SBhwkm20L8sa+5WviQwkVzhbsU5U+8djXfijo+ETVSXyOJv7hd3aGSsD6H6e9O5lDMmia/cUVHzvc9jP0oSL3QXh/TCHQ4AAAAAAAAAAAD6szsfj8fzZSIbve3ZrfbbzI2SJFC3t+i0EyRe5Gb5NZ12pbTgmB7iSD+VoF5rbWVBKggXhy/JR2bfk279RJuyVvph+6JMaxDm+ylpnvdZZD7Uup9xKs/AP0xii22Ve7WNsg3aOP5JdC6PJ7/uDciOlt5S6Hbwehv1Tt4/kjpYiKv3r7cejZ16fJZBJuijvGyitw949qdorhsZc4PUJcveL0kV8x9r3wb2Z9ebHE3IerN7lzfsflJhvCub4Bh+Zb9jEh7HT+/nUmK88dvqKhnP7+YYjtznxIP2L3XoUd9yS0dsoE+OznUswcXoCbxj/FGmAJeo19udJOhghK9xziT3cBz8CBXJK0I2mIFvepNc9JWs+MUvOGxD/ZYgOOQ92p31BVEiBruY4ctI4XCXayzeB6ZmoHuYUtpoySBPf5O8NkfFIG+6cc3U6hngNq2Asf4ZTV8ad9mm27UM8EyPpH6mhPyazVnOUFFBPurPZX2GRW9KvRgmeAKZFvLnhsXlUFNv3MBwdGAIQxjyA0MYwpAfGMIQhvzAEIYw5AeGMIQhPzCEIQz5gSEMYcgPDGEIQ35gCEMY8gNDGMKQn0ENHwdNnYJxtZyfH/SGpnpv5fZP9cvtP2u+qa5//UIGueExy5fLbFmSLZ6IH7i1+K+E9x+1RC94d5JngjtOB8M/OCdYpsoN4csAAAAASUVORK5CYII=">
+                    </a>
                 </div>
                 <li class="nav-item dropdown">
 
                     <div class="p-2">
-                        <!-- onclick="handleLogout()" -->
                         <div id="userAPI" style="color: aliceblue;">
                             <a class="nav-link dropdown-toggle" id="dropdown_toggle" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false" style="color: aliceblue;">
                                 로그인
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" id="dropdown_item_3" onclick="handleLogout()">Logout</a>
+                                <li><a id="dropdown_item_1" class="dropdown_option_1" href="signin.html">로그인</a></li>
+                                <li><a id="dropdown_item_2" class="dropdown_option_1" href="signup.html">회원 가입</a></li>
+                                <li><a id="dropdown_item_3" class="dropdown_option_2" href="#"
+                                        onclick="handleLogout()">로그
+                                        아웃</a>
                                 </li>
-                                <li><a class="dropdown-item" id="dropdown_item_1" href="signin.html">Login</a></li>
-                                <li><a class="dropdown-item" id="dropdown_item_2" href="signup.html">Signup</a></li>
+                                <li><a id="dropdown_item_4" class="dropdown_option_2" href="updateUserInfo.html">회원 정보
+                                        수정</a></li>
+                                <li><a id="dropdown_item_5" class="dropdown_option_2" href="posts.html">게시글 작성</a></li>
+                                <li><a id="dropdown_item_7" class="dropdown_option_1" href="auth_email.html">이메일 인증</a>
+                                </li>
+                                <li><a id="dropdown_item_8" class="dropdown_option_2" href="profile.html">프로필 페이지</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </li>
             </div>
-
         </div>
-
     </nav>
 
+
+
+    <script src="/js/home.js"></script>
 </body>
 
 </html>

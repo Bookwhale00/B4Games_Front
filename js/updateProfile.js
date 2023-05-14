@@ -5,6 +5,43 @@ const API_USERS = "api/users"
 window.onload = async () => {
     const payload = localStorage.getItem("payload");
     const payload_parse = JSON.parse(payload)
+    const dropdown_options_1 = document.querySelectorAll(".dropdown_option_1");
+
+    if (payload_parse != null) {
+        dropdown_options_1.forEach((option) => {
+            option.style.display = "none";
+        });
+
+        const nav_response = await fetch(`${backend_base_url}/${API_USERS}/profile_view/${payload_parse.user_id}`)
+        const nav_response_json = await nav_response.json()
+
+        dropdown_menu = document.getElementById("dropdown_toggle")
+        dropdown_menu.innerText = nav_response_json.username
+
+
+        nav_profile_image = document.getElementById("nav_profile_image")
+
+        if (nav_response_json.image != null) {
+            nav_profile_image.setAttribute("src", `${backend_base_url}${nav_response_json.image}`)
+        }
+
+    } else {
+        const dropdown_options_2 = document.querySelectorAll(".dropdown_option_2");
+        dropdown_options_2.forEach((option) => {
+            option.style.display = "none";
+        });
+    }
+    // 판매회원 아니면 글작성 아예 안보이게
+
+    const isSeller = JSON.parse(payload ?? '{}').is_seller;
+
+    if (isSeller === false) {
+        dropdown_item_5 = document.getElementById("dropdown_item_5")
+        dropdown_item_5.style.display = "none"
+    }
+
+
+
 
     const username = document.getElementById("username")
     const status_message = document.getElementById("status_message")
@@ -34,10 +71,9 @@ async function updateProfile() {
     const username = document.getElementById("username").value
     const status_message = document.getElementById("status_message").value
     const user_id = document.getElementById("user_id").value
-    console.log(image, username, status_message, user_id)
+
 
     const formdata = new FormData();
-
     formdata.append('username', username)
     formdata.append('status_message', status_message)
 
@@ -53,15 +89,10 @@ async function updateProfile() {
 
         const response = await fetch(`${backend_base_url}/${API_USERS}/profile_view/${user_id}/`, {
             headers: {
-                'content-type': 'application/json',
                 "Authorization": `Bearer ${access_token}`
             },
             method: 'PUT',
-            body: JSON.stringify({
-                // "image": image,
-                "username": username,
-                "status_message": status_message
-            })
+            body: formdata
         })
         const response_json = await response.json()
         if (response.status == 200) {
@@ -69,7 +100,7 @@ async function updateProfile() {
             window.location.replace(`${frontend_base_url}/html/profile.html`)
         } else if (response.status == 400) {
             alert(response_json.message)
-            console.log(response_json)
+
         }
     } catch (err) {
         // server error

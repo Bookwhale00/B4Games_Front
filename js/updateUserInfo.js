@@ -6,7 +6,7 @@ const API_USERS = "api/users"
 window.onload = () => {
     const payload = localStorage.getItem("payload");
     const payload_parse = JSON.parse(payload)
-    console.log(payload_parse)
+
     const email = document.getElementById("email")
     email.innerText = payload_parse.email
 
@@ -50,7 +50,7 @@ async function handleUpdateUserInfo() {
     let is_seller = document.getElementById("is_seller").value
     is_seller = is_seller == "판매 회원" ? "True" : "False"
 
-    console.log(user_id)
+
     try {
         const access_token = localStorage.getItem("access")
         const response = await fetch(`${backend_base_url}/${API_USERS}/${user_id}/`, {

@@ -49,7 +49,7 @@ window.onload = async function () {
 
     const urlParams = new URLSearchParams(window.location.search);
     articleId = urlParams.get('article_id');
-    console.log(articleId)
+
     beforeArticle(articleId);
 }
 
@@ -60,7 +60,6 @@ async function beforeArticle(articleId) {
 
     if (response.status == 200) {
         response_json = await response.json()
-        console.log(response_json)
 
     } else {
         alert(response.status)
@@ -119,7 +118,6 @@ async function updateArticle() {
 
 
 function handleLogout() {
-    console.log("테스트 완료")
     localStorage.removeItem("access")
     localStorage.removeItem("refresh")
     localStorage.removeItem("payload")

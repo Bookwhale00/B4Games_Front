@@ -14,6 +14,9 @@ function handleLogout() {
 // 댓글 작성할 때 DB로 댓글 내용과 게시글 id를 같이 보내주기 위한 정의
 let articleId
 
+function userProfile(user_id) {
+    window.location.href = `${frontend_base_url}/html/profile.html?user_id=${user_id}`
+}
 
 // 댓글 가져오기
 async function loadComments(articleId) {
@@ -23,7 +26,6 @@ async function loadComments(articleId) {
     commentsList.innerHTML = ""
 
     response.forEach(comment => {
-
         commentsList.innerHTML += `
         <li class="media d-flex mb-3">
             <img class="mr-3" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FrDdA1%2FbtsffuyYjwr%2FwmKwmMYWGRU7Ng5EcT7Zkk%2Fimg.png" alt="프로필 이미지" width="50" height="50">
@@ -61,6 +63,8 @@ async function loadArticles(articleId) {
     articleTitle.innerText = response.title
     articleContent.innerText = response.content
     articleOwner.innerText = "작성한 사람: " + response.owner
+    articleOwner.setAttribute("onclick", `userProfile(${response.pk})`)
+
 
     const newImage = document.createElement("img")
     if (response.image) {
@@ -77,8 +81,7 @@ async function loadArticles(articleId) {
     const authorId = response.owner
     const payload = localStorage.getItem("payload");
     const currentUser = payload ? JSON.parse(payload).username : undefined;
-    console.log(currentUser)
-    
+
     // currentUser !=undefined 그리고 authorId = currentUser 
     if (currentUser && authorId === currentUser) {
         document.getElementById("update_button").style.display = "block";
@@ -138,7 +141,7 @@ window.onload = async function () {
 
         dropdown_menu = document.getElementById("dropdown_toggle")
         dropdown_menu.innerText = nav_response_json.username
-        console.log(nav_response_json.is_seller)
+
 
         nav_profile_image = document.getElementById("nav_profile_image")
         if (nav_response_json.image != null) {
@@ -224,16 +227,15 @@ async function postComment(articleId, newComment) {
 function toggleOptions() {
     var optionsDiv = document.getElementById("options");
     if (optionsDiv.style.display === "none") {
-      optionsDiv.style.display = "block";
+        optionsDiv.style.display = "block";
     } else {
-      optionsDiv.style.display = "none";
+        optionsDiv.style.display = "none";
     }
-  }
-  
-  
+}
 
 
 
-  
-  
-  
+
+
+
+
