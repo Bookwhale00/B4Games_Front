@@ -1,4 +1,4 @@
-const frontend_base_url = "http://127.0.0.1:5500"
+const frontend_base_url = "http://127.0.0.1:5003"
 const backend_base_url = "http://127.0.0.1:8000"
 const API_USERS = "api/users"
 
@@ -163,16 +163,13 @@ async function deleteComments(commentId) {
 
 // 페이지 로딩되면 게시글이랑 댓글 가져오기
 window.onload = async function () {
-    // 상단바 (from homa.js)
     const payload = localStorage.getItem("payload");
     const payload_parse = JSON.parse(payload)
+    const dropdown_options_1 = document.querySelectorAll(".dropdown_option_1");
     if (payload_parse != null) {
-        dropdown_item_1 = document.getElementById("dropdown_item_1")
-        dropdown_item_2 = document.getElementById("dropdown_item_2")
-        dropdown_item_7 = document.getElementById("dropdown_item_7")
-        dropdown_item_1.style.display = "none"
-        dropdown_item_2.style.display = "none"
-        dropdown_item_7.style.display = "none"
+        dropdown_options_1.forEach((option) => {
+            option.style.display = "none";
+        });
 
         const nav_response = await fetch(`${backend_base_url}/${API_USERS}/profile_view/${payload_parse.user_id}`)
         const nav_response_json = await nav_response.json()
@@ -182,28 +179,28 @@ window.onload = async function () {
 
 
         nav_profile_image = document.getElementById("nav_profile_image")
+
         if (nav_response_json.image != null) {
             nav_profile_image.setAttribute("src", `${backend_base_url}${nav_response_json.image}`)
         }
 
     } else {
-        dropdown_item_3 = document.getElementById("dropdown_item_3")
-        dropdown_item_4 = document.getElementById("dropdown_item_4")
-        dropdown_item_5 = document.getElementById("dropdown_item_5")
-        dropdown_item_8 = document.getElementById("dropdown_item_8")
-        dropdown_item_3.style.display = "none"
-        dropdown_item_4.style.display = "none"
-        dropdown_item_5.style.display = "none"
-        dropdown_item_8.style.display = "none"
+        const dropdown_options_2 = document.querySelectorAll(".dropdown_option_2");
+        dropdown_options_2.forEach((option) => {
+            option.style.display = "none";
+        });
+        nav_profile_image = document.getElementById("nav_profile_image")
+        nav_profile_image.style.display = "none"
     }
 
     // 판매회원 아니면 글작성 아예 안보이게
+
     const isSeller = JSON.parse(payload ?? '{}').is_seller;
+
     if (isSeller === false) {
         dropdown_item_5 = document.getElementById("dropdown_item_5")
         dropdown_item_5.style.display = "none"
     }
-
     const urlParams = new URLSearchParams(window.location.search);
     articleId = urlParams.get('article_id');
     loadArticles(articleId);

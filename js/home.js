@@ -1,13 +1,6 @@
-const frontend_base_url = "http://127.0.0.1:5500"
+const frontend_base_url = "http://127.0.0.1:5003"
 const backend_base_url = "http://127.0.0.1:8000"
 const API_USERS = "api/users"
-
-// 연결 테스트, 사용자 정보 읽어오기
-// //  http://127.0.0.1:8000/api/users/1
-// fetch(`${backend_base_url}/${API_USERS}/1`)
-//     .then((response) => response.json())
-//     .then((data) => console.log(data));
-
 
 
 //  로그아웃
@@ -51,6 +44,8 @@ window.onload = async function loadArticles() {
         dropdown_options_2.forEach((option) => {
             option.style.display = "none";
         });
+        nav_profile_image = document.getElementById("nav_profile_image")
+        nav_profile_image.style.display = "none"
     }
 
     // 판매회원 아니면 글작성 아예 안보이게

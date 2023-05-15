@@ -1,4 +1,4 @@
-const frontend_base_url = "http://127.0.0.1:5500"
+const frontend_base_url = "http://127.0.0.1:5003"
 const backend_base_url = "http://127.0.0.1:8000"
 const API_USERS = "api/users"
 
@@ -27,7 +27,7 @@ async function handleSignup() {
         })
         const response_json = await response.json()
         if (response.status == 201) {
-            // alert(`가입을 축하드립니다!`)
+            alert(`이메일 인증이 필요합니다.`)
             window.location.replace(`${frontend_base_url}/html/auth_email.html`)
         } else if (response.status == 401) {
             alert("비밀번호 또는 이메일 정보가 올바르지 않습니다.");
