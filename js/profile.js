@@ -58,7 +58,9 @@ window.onload = async () => {
     const response = await fetch(`${backend_base_url}/${API_USERS}/profile_view/${user_id}`)
     const response_json = await response.json()
 
-    if (response_json.email != payload_parse.email) {
+    if (payload_parse == null) {
+        update_profile.style.display = "none"
+    } else if (response_json.email != payload_parse.email) {
         update_profile.style.display = "none"
     }
 

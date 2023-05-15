@@ -77,7 +77,6 @@ async function loadArticles(articleId) {
     articleOwner.innerText = "작성한 사람: " + response.owner
     articleOwner.setAttribute("onclick", `userProfile(${response.user_id})`)
 
-
     const newImage = document.createElement("img")
     if (response.image) {
         newImage.setAttribute("src", `${backend_base_url}${response.image}`)
@@ -143,7 +142,6 @@ async function removeComments(commentId) {
 
 // 댓글 삭제 api
 async function deleteComments(commentId) {
-
 
     let token = localStorage.getItem("access")
 
@@ -214,7 +212,6 @@ async function getArticle(articleId) {
 
     if (response.status == 200) {
         response_json = await response.json()
-
         return response_json
     } else {
         alert(response.status)
