@@ -84,3 +84,29 @@ async function handleUpdateUserInfo() {
 
 }
 
+
+async function handleDeleteUserInfo() {
+    const payload = localStorage.getItem("payload");
+    const payload_parse = JSON.parse(payload)
+    const access_token = localStorage.getItem("access")
+    const response = await fetch(`${backend_base_url}/${API_USERS}/${payload_parse.user_id}/`, {
+        headers: {
+            'content-type': 'application/json',
+            "Authorization": `Bearer ${access_token}`
+        },
+        method: 'DELETE',
+    })
+    if (response.status == 200) {
+        alert(`계정을 비활성화 했습니다.`)
+        localStorage.removeItem("access")
+        localStorage.removeItem("refresh")
+        localStorage.removeItem("payload")
+        location.reload();
+        window.location.replace(`${frontend_base_url}/html/home.html`)
+    } else if (response.status == 404) {
+        alert(`회원 정보를 찾을 수 없습니다.`)
+    } else if (response.status == 400) {
+        alert(`권한이 없습니다.`)
+    }
+
+}

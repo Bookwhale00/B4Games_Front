@@ -24,9 +24,9 @@
                 alt="Logo" width="70" height="70" style="margin-top: 5%;">
         </a>
     </div>
-    <div style="margin: 10%;">
+    <div style="margin: 2%;">
         <form>
-            <legend style="font-weight: bold; text-align: center; margin-bottom: 10%;">회원 가입</legend>
+            <legend style="font-weight: bold; text-align: center; margin-bottom: 3%;">회원 가입</legend>
             <div>
                 <input type="hidden" id="user_id" style="display: none;">
             </div>
@@ -57,6 +57,9 @@
 
         <button type="button" style="width: 100%; margin-top: 3%;" class="btn btn-primary" onclick="handleSendMail()">인증
             코드 발급 받기</button>
+        <button type="button" style="width: 100%; margin-top: 3%;" class="btn btn-danger"
+            onclick="handleDeleteUserInfo()">휴면
+            계정으로 전환</button>
         <a href="home.html">
             <button style="width: 100%; margin-top: 10%;" class="btn btn-success">메인 페이지로 이동</button>
         </a>
