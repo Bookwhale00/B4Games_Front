@@ -1,4 +1,4 @@
-const frontend_base_url = "http://127.0.0.1:5500"
+const frontend_base_url = "http://127.0.0.1:5003"
 const backend_base_url = "http://127.0.0.1:8000"
 const API_USERS = "api/users"
 
@@ -6,7 +6,6 @@ window.onload = async () => {
     const payload = localStorage.getItem("payload");
     const payload_parse = JSON.parse(payload)
     const dropdown_options_1 = document.querySelectorAll(".dropdown_option_1");
-
     if (payload_parse != null) {
         dropdown_options_1.forEach((option) => {
             option.style.display = "none";
@@ -30,7 +29,10 @@ window.onload = async () => {
         dropdown_options_2.forEach((option) => {
             option.style.display = "none";
         });
+        nav_profile_image = document.getElementById("nav_profile_image")
+        nav_profile_image.style.display = "none"
     }
+
     // 판매회원 아니면 글작성 아예 안보이게
 
     const isSeller = JSON.parse(payload ?? '{}').is_seller;
