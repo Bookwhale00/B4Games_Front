@@ -2,7 +2,6 @@ const frontend_base_url = "http://127.0.0.1:5003"
 const backend_base_url = "http://127.0.0.1:8000"
 const API_USERS = "api/users"
 
-// 페이지 로딩되면 기존 게시글 내용 가져오기
 
 window.onload = async function () {
     const payload = localStorage.getItem("payload");
@@ -44,7 +43,6 @@ window.onload = async function () {
         dropdown_item_5.style.display = "none"
     }
 
-
     const urlParams = new URLSearchParams(window.location.search);
     articleId = urlParams.get('article_id');
 
@@ -65,7 +63,8 @@ async function beforeArticle(articleId) {
 
     document.getElementById("title").value = response_json.title;
     document.getElementById("content").value = response_json.content;
-    document.getElementById("image").value = response_json.image;
+    document.getElementById("image").files[0] = response_json.image;
+    document.getElementById("price").value = response_json.price;
 
     return response_json;
 }
@@ -84,11 +83,13 @@ async function updateArticle() {
     const title = document.getElementById("title").value
     const content = document.getElementById("content").value
     const image = document.getElementById("image").files[0]
+    const price = document.getElementById("price").value
 
     const formdata = new FormData();
 
     formdata.append('title', title)
     formdata.append('content', content)
+    formdata.append('price', price)
 
     if (image) {
         formdata.append('image', image)

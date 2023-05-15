@@ -21,17 +21,25 @@ function userProfile(user_id) {
 // 댓글 가져오기
 async function loadComments(articleId) {
     const response = await getComments(articleId);
+    console.log(response)
+    const payload = localStorage.getItem("payload");
+    const currentUser = payload ? JSON.parse(payload).username : undefined;
 
     const commentsList = document.getElementById("comment-list")
     commentsList.innerHTML = ""
 
     response.forEach(comment => {
+        const deleteButton = comment.owner === currentUser
+            ? `<button type="button" class="btn btn-sm btn-outline-danger delete-comment" data-comment-id="${comment.id}" onclick="removeComments(${comment.id})">삭제</button>`
+            : '';
+
         commentsList.innerHTML += `
         <li class="media d-flex mb-3">
             <img class="mr-3" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FrDdA1%2FbtsffuyYjwr%2FwmKwmMYWGRU7Ng5EcT7Zkk%2Fimg.png" alt="프로필 이미지" width="50" height="50">
             <div class="media-body">
             <h5 class="mt-0 mb-1">${comment.owner}</h5>
             ${comment.content}
+            ${deleteButton}
             </div>
         </li>
         `
@@ -44,6 +52,7 @@ async function submitComment() {
     const newComment = commentElement.value
     const response = await postComment(articleId, newComment)
     commentElement.value = ""
+    
 
     // location.reload()
     // 새로고침 없이 하려면
@@ -58,10 +67,13 @@ async function loadArticles(articleId) {
     const articleImage = document.getElementById("article-image")
     const articleContent = document.getElementById("article-content")
     const articleOwner = document.getElementById("article-owner")
+    const articlePrice = document.getElementById("article-price")
 
-
+    const formattedPrice = new Intl.NumberFormat().format(response.price);
+  
     articleTitle.innerText = response.title
     articleContent.innerText = response.content
+    articlePrice.textContent = "가격: " + formattedPrice +"원"
     articleOwner.innerText = "작성한 사람: " + response.owner
     articleOwner.setAttribute("onclick", `userProfile(${response.pk})`)
 
@@ -110,6 +122,32 @@ async function deleteArticle() {
     let token = localStorage.getItem("access")
 
     const response = await fetch(`${backend_base_url}/api/posts/${articleId}`,
+        {
+            method: 'DELETE',
+            headers: {
+                "Authorization": `Bearer ${token}`
+            },
+        })
+    if (response.status == 204) {
+    } else {
+        alert(response.status)
+    }
+}
+
+// 댓글 삭제하기
+async function removeComments(commentId) {
+    await deleteComments(commentId)
+    alert("삭제되었습니다.")
+    window.location.reload();
+}
+
+// 댓글 삭제 api
+async function deleteComments(commentId) {
+
+    console.log(commentId)
+    let token = localStorage.getItem("access")
+
+    const response = await fetch(`${backend_base_url}/api/comments/${articleId}/comment/${commentId}`,
         {
             method: 'DELETE',
             headers: {
@@ -176,6 +214,7 @@ async function getArticle(articleId) {
 
     if (response.status == 200) {
         response_json = await response.json()
+        console.log(response_json)
         return response_json
     } else {
         alert(response.status)
