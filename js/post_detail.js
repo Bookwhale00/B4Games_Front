@@ -1,4 +1,4 @@
-const frontend_base_url = "http://127.0.0.1:5003"
+const frontend_base_url = "http://127.0.0.1:9240"
 const backend_base_url = "http://127.0.0.1:8000"
 const API_USERS = "api/users"
 
@@ -21,7 +21,6 @@ function userProfile(user_id) {
 // 댓글 가져오기
 async function loadComments(articleId) {
     const response = await getComments(articleId);
-    console.log(response)
     const payload = localStorage.getItem("payload");
     const currentUser = payload ? JSON.parse(payload).username : undefined;
 
@@ -44,6 +43,7 @@ async function loadComments(articleId) {
         </li>
         `
     })
+
 }
 
 // 댓글 작성하기
@@ -52,7 +52,7 @@ async function submitComment() {
     const newComment = commentElement.value
     const response = await postComment(articleId, newComment)
     commentElement.value = ""
-    
+
 
     // location.reload()
     // 새로고침 없이 하려면
@@ -70,12 +70,12 @@ async function loadArticles(articleId) {
     const articlePrice = document.getElementById("article-price")
 
     const formattedPrice = new Intl.NumberFormat().format(response.price);
-  
+
     articleTitle.innerText = response.title
     articleContent.innerText = response.content
-    articlePrice.textContent = "가격: " + formattedPrice +"원"
+    articlePrice.textContent = "가격: " + formattedPrice + "원"
     articleOwner.innerText = "작성한 사람: " + response.owner
-    articleOwner.setAttribute("onclick", `userProfile(${response.pk})`)
+    articleOwner.setAttribute("onclick", `userProfile(${response.user_id})`)
 
 
     const newImage = document.createElement("img")
@@ -144,7 +144,7 @@ async function removeComments(commentId) {
 // 댓글 삭제 api
 async function deleteComments(commentId) {
 
-    console.log(commentId)
+
     let token = localStorage.getItem("access")
 
     const response = await fetch(`${backend_base_url}/api/comments/${articleId}/comment/${commentId}`,
@@ -214,7 +214,7 @@ async function getArticle(articleId) {
 
     if (response.status == 200) {
         response_json = await response.json()
-        console.log(response_json)
+
         return response_json
     } else {
         alert(response.status)
