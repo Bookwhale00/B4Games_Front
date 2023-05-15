@@ -1,4 +1,4 @@
-const frontend_base_url = "http://127.0.0.1:8741"
+const frontend_base_url = "http://127.0.0.1:5500"
 const backend_base_url = "http://127.0.0.1:8000"
 const API_USERS = "api/users"
 
@@ -37,6 +37,7 @@ window.onload = async () => {
     }
     const urlParams = new URLSearchParams(window.location.search);
     user_id = urlParams.get('user_id');
+    console.log(user_id)
     user_id = user_id == null ? payload_parse.user_id : user_id
 
     const follower = document.getElementById("follower")
@@ -80,6 +81,10 @@ window.onload = async () => {
         owner_follow.innerText = (response_json.followers.includes(payload_parse.email)) ? 'Unfollow' : "Follow"
     }
 
+    // 로드되면 내 게시글 가져오기
+    const myPosturlParams = new URLSearchParams(window.location.search);
+    articleId = myPosturlParams.get('article_id');
+    loadArticles(articleId)
 
 }
 
@@ -120,6 +125,13 @@ async function handleLogout() {
     localStorage.removeItem("refresh")
     localStorage.removeItem("payload")
     location.reload();
+}
+
+// 이하 MyPost관련
+
+// 게시글 수정페이지로 이동
+function updateMode(articleId) {
+    window.location.href = `post_update.html?article_id=${articleId}`
 }
 
 // 게시글 삭제하기
